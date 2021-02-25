@@ -1,12 +1,14 @@
-sample = []
-output = []
-for i in range(int(input())):
-    sample.append([])
-    len = int(input())
+from collections import deque
+for _ in range(int(input())):
+    _, queue = input(), deque(map(int, input().split()))
 
-    sample[i].extend(input().split(" "))
-    for cube in range(len):
-        if sample[i][0] >= sample[i][-1]:
-            sample[i].pop(cube)
+    for i in reversed(sorted(queue)):
+        if queue[-1] == i :
+            queue.pop()
 
-print(sample)
+        elif queue[0] == i :
+            queue.popleft()
+        else:
+            print("No")
+            break
+    else: print('Yes')
